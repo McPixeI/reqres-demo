@@ -19,7 +19,7 @@ export interface UserListResponse {
 export const usersApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getAllUsersPaginated: build.query<UserListResponse, number | void>({
-      query: (page = 1) => `users?page=${page}&per_page=2`,
+      query: (page = 1) => `users?page=${page}`,
     }),
   }),
 });

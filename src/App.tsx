@@ -22,17 +22,18 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Title>Users</Title>
-        {isSuccess &&
-          users?.data.map((user) => <p key={user.id}>{user.first_name}</p>)}
-        {users.page > 1 && (
-          <button onClick={() => setPage(page - 1)}>Prev page</button>
-        )}
-        {users.page < users.total_pages && (
-          <button onClick={() => setPage(page + 1)}>Next page</button>
-        )}
-      </header>
+      <Title>Users</Title>
+      {isSuccess &&
+        users?.data.map((user) => <p key={user.id}>{user.first_name}</p>)}
+      <button onClick={() => setPage(page - 1)} disabled={users.page === 1}>
+        Prev page
+      </button>
+      <button
+        onClick={() => setPage(page + 1)}
+        disabled={users.page >= users.total_pages}
+      >
+        Next page
+      </button>
     </div>
   );
 }
