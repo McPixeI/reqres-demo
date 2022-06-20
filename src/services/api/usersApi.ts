@@ -23,6 +23,7 @@ export const usersApi = baseApi.injectEndpoints({
     }),
     getUserById: build.query<User, number>({
       query: (id) => `users/${id}`,
+      transformResponse: (rawResult: { data: User }) => rawResult.data,
     }),
   }),
 });

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./App.css";
 import styled from "styled-components";
 import {
   useGetAllUsersPaginatedQuery,
@@ -41,7 +40,7 @@ function App() {
       </button>
       <Title>Get user by id (3)</Title>
 
-      <p>{JSON.stringify(user)}</p>
+      <pre>{JSON.stringify(user, undefined, 4)}</pre>
     </div>
   );
 }
