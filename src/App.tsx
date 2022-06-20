@@ -24,7 +24,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Title>Users</Title>
-        {isSuccess && users?.data.map((user) => <p>{user.first_name}</p>)}
+        {isSuccess &&
+          users?.data.map((user) => <p key={user.id}>{user.first_name}</p>)}
         {users.page > 1 && (
           <button onClick={() => setPage(page - 1)}>Prev page</button>
         )}
