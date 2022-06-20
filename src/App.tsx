@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
 import styled from "styled-components";
-import { useGetAllUsersPaginatedQuery } from "./services/api/usersApi";
+import {
+  useGetAllUsersPaginatedQuery,
+  useGetUserByIdQuery,
+} from "./services/api/usersApi";
 
 const Title = styled.h1`
   color: palevioletred;
@@ -16,13 +19,15 @@ function App() {
     isSuccess,
   } = useGetAllUsersPaginatedQuery(page);
 
+  const { data: user } = useGetUserByIdQuery(Number(3));
+
   if (isLoading) return <div>Loading...</div>;
   if (!users?.data) return <div>No users...</div>;
   if (isError) return <div>Oops, ther was an error</div>;
 
   return (
     <div className="App">
-      <Title>Users</Title>
+      <Title>Get paginated users</Title>
       {isSuccess &&
         users?.data.map((user) => <p key={user.id}>{user.first_name}</p>)}
       <button onClick={() => setPage(page - 1)} disabled={users.page === 1}>
@@ -34,6 +39,9 @@ function App() {
       >
         Next page
       </button>
+      <Title>Get user by id (3)</Title>
+
+      <p>{JSON.stringify(user)}</p>
     </div>
   );
 }

@@ -21,7 +21,10 @@ export const usersApi = baseApi.injectEndpoints({
     getAllUsersPaginated: build.query<UserListResponse, number | void>({
       query: (page = 1) => `users?page=${page}`,
     }),
+    getUserById: build.query<User, number>({
+      query: (id) => `users/${id}`,
+    }),
   }),
 });
 
-export const { useGetAllUsersPaginatedQuery } = usersApi;
+export const { useGetAllUsersPaginatedQuery, useGetUserByIdQuery } = usersApi;
