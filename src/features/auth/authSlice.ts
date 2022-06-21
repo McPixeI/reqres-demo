@@ -6,7 +6,7 @@ type AuthState = {
   token: string | null;
 };
 
-const initialState = { user: null, token: null } as AuthState;
+const initialState = { token: null } as AuthState;
 
 const authSlice = createSlice({
   name: "auth",
@@ -22,6 +22,8 @@ const authSlice = createSlice({
     builder.addMatcher(
       authApi.endpoints.register.matchFulfilled,
       (state, { payload }) => {
+        console.log(JSON.stringify(state.token));
+        console.log(JSON.stringify(payload));
         state.token = payload.token;
       }
     );
