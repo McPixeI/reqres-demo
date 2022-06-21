@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useRegisterMutation } from "./app/services/auth";
 import {
   useGetAllUsersPaginatedQuery,
   useGetUserByIdQuery,
@@ -20,12 +21,35 @@ function App() {
 
   const { data: user } = useGetUserByIdQuery(Number(3));
 
+  const [register, registerResult] = useRegisterMutation();
+  const [login, loginResult] = useRegisterMutation();
+
   if (isLoading) return <div>Loading...</div>;
   if (!users?.data) return <div>No users...</div>;
   if (isError) return <div>Oops, ther was an error</div>;
 
   return (
     <div className="App">
+      <button
+        onClick={() =>
+          register({
+            email: "eve.holt@reqres.in",
+            password: "pistol",
+          })
+        }
+      >
+        Fake register
+      </button>
+      <button
+        onClick={() =>
+          login({
+            email: "eve.holt@reqres.in",
+            password: "pistol",
+          })
+        }
+      >
+        Fake login
+      </button>
       <Title>Get paginated users</Title>
       {isSuccess &&
         users?.data.map((user) => <p key={user.id}>{user.first_name}</p>)}
