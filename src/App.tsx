@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {
   useGetAllUsersPaginatedQuery,
   useGetUserByIdQuery,
-} from "./services/api/usersApi";
+} from "./app/services/users";
 
 const Title = styled.h1`
   color: palevioletred;

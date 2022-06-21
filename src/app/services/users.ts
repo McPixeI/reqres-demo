@@ -1,4 +1,4 @@
-import { baseApi } from "./baseApi";
+import { baseApi } from "./base";
 
 export interface User {
   id: number;
