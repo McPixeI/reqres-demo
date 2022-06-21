@@ -5,6 +5,8 @@ import {
   useGetAllUsersPaginatedQuery,
   useGetUserByIdQuery,
 } from "./app/services/users";
+import { useAppDispatch } from "./app/store";
+import { logout } from "./features/auth/authSlice";
 
 const Title = styled.h1`
   color: palevioletred;
@@ -23,6 +25,8 @@ function App() {
 
   const [register, registerResult] = useRegisterMutation();
   const [login, loginResult] = useRegisterMutation();
+
+  const dispatch = useAppDispatch();
 
   if (isLoading) return <div>Loading...</div>;
   if (!users?.data) return <div>No users...</div>;
@@ -50,6 +54,7 @@ function App() {
       >
         Fake login
       </button>
+      <button onClick={() => dispatch(logout())}>Fake logout</button>
       <Title>Get paginated users</Title>
       {isSuccess &&
         users?.data.map((user) => <p key={user.id}>{user.first_name}</p>)}

@@ -30,9 +30,6 @@ export const authApi = baseApi.injectEndpoints({
         body: credentials,
       }),
     }),
-    logout: build.mutation({
-      query: () => "",
-    }),
   }),
 });
 
