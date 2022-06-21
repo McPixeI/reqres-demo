@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useRegisterMutation } from "./app/services/auth";
+import { useLoginMutation, useRegisterMutation } from "./app/services/auth";
 import {
   useGetAllUsersPaginatedQuery,
   useGetUserByIdQuery,
@@ -23,8 +23,8 @@ function App() {
 
   const { data: user } = useGetUserByIdQuery(Number(3));
 
-  const [register, registerResult] = useRegisterMutation();
-  const [login, loginResult] = useRegisterMutation();
+  const [register] = useRegisterMutation();
+  const [login] = useLoginMutation();
 
   const dispatch = useAppDispatch();
 
